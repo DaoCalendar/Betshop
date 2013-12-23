@@ -9,11 +9,11 @@ namespace NV10Connector
 {
     public class BetShopATMConnector
     {
-        private string serviceURL = null;
-        private string client = null;
-        private string accesskey = null;
-        private string user = null;
-        private string logPath = null;
+        public string serviceURL = null;
+        public string client = null;
+        public string accesskey = null;
+        public string user = null;
+        public string logPath = null;
         public string port = null;
         public bool autoRun = false;
         public bool debug = false;
@@ -114,7 +114,7 @@ namespace NV10Connector
                 catch (Exception exc)
                 {
                     ex = exc;
-                    // textBoxLog.Invoke(new MethodInvoker(delegate { textBoxLog.AppendText("\r\n" + ex.Message + "\r\n"); textBoxLog.SelectionStart = textBoxLog.Text.Length; textBoxLog.ScrollToCaret(); }));
+                    //textBoxLog.Invoke(new MethodInvoker(delegate { textBoxLog.AppendText("\r\n" + ex.Message + "\r\n"); textBoxLog.SelectionStart = textBoxLog.Text.Length; textBoxLog.ScrollToCaret(); }));
                     //LogError(ex, false);
                 }
             }

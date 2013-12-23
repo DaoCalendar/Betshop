@@ -263,6 +263,13 @@ namespace NV10Connector
             }
         }
 
+        private void btnTestServer_Click(object sender, EventArgs e)
+        {
+            string text = "Test cash push";
+            double amount = 100.0;
+            betShopATM.AppendText(text, amount);
+        }
+
 
     }
 }

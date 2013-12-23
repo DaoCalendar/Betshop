@@ -42,6 +42,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.lblAppVer = new System.Windows.Forms.Label();
             this.cbEncrypt = new System.Windows.Forms.CheckBox();
+            this.btnTestServer = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // textBox1
@@ -165,11 +166,22 @@
             this.cbEncrypt.UseVisualStyleBackColor = true;
             this.cbEncrypt.CheckedChanged += new System.EventHandler(this.cbEncrypt_CheckedChanged);
             // 
+            // btnTestServer
+            // 
+            this.btnTestServer.Location = new System.Drawing.Point(475, 353);
+            this.btnTestServer.Name = "btnTestServer";
+            this.btnTestServer.Size = new System.Drawing.Size(121, 23);
+            this.btnTestServer.TabIndex = 14;
+            this.btnTestServer.Text = "Test server";
+            this.btnTestServer.UseVisualStyleBackColor = true;
+            this.btnTestServer.Click += new System.EventHandler(this.btnTestServer_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(607, 434);
+            this.Controls.Add(this.btnTestServer);
             this.Controls.Add(this.cbEncrypt);
             this.Controls.Add(this.lblAppVer);
             this.Controls.Add(this.label3);
@@ -205,6 +217,7 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label lblAppVer;
         private System.Windows.Forms.CheckBox cbEncrypt;
+        private System.Windows.Forms.Button btnTestServer;
     }
 }
 
