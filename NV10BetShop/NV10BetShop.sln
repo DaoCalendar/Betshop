@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NV10Connector", "NV10Connector\NV10Connector.csproj", "{CCA3C6E4-B996-42C7-AE13-5FF7C703C763}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "eSSPNV10", "eSPPNV10\eSSPNV10.csproj", "{88EE2CCF-29E9-4DD6-806D-62D3687F10C7}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CCA3C6E4-B996-42C7-AE13-5FF7C703C763}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CCA3C6E4-B996-42C7-AE13-5FF7C703C763}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CCA3C6E4-B996-42C7-AE13-5FF7C703C763}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CCA3C6E4-B996-42C7-AE13-5FF7C703C763}.Release|Any CPU.Build.0 = Release|Any CPU
+		{88EE2CCF-29E9-4DD6-806D-62D3687F10C7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{88EE2CCF-29E9-4DD6-806D-62D3687F10C7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{88EE2CCF-29E9-4DD6-806D-62D3687F10C7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{88EE2CCF-29E9-4DD6-806D-62D3687F10C7}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
