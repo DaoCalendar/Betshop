@@ -65,7 +65,7 @@ namespace eSSPNV10.SC
 
         public static NV10PollEvent Parse(NV10Response response)
         {
-            NV10PollEvent resp = null;
+            //NV10PollEvent resp = null;
             NV10PollEventType type = NV10PollEventType.Ok;
             int data = -1;
             if (response._data.Length != 0)

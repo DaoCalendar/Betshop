@@ -45,6 +45,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BetShopATMConnector.cs" />
+    <Compile Include="BetShopPushEvent.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>

@@ -41,7 +41,7 @@ namespace NV10Connector
                 cbxDeviceID.Items.Add("" + i);
             }
 
-            betShopATM = new BetShopATMConnector(Application.StartupPath);
+            betShopATM = new BetShopATMConnector(Application.StartupPath, GetResponseData, GetResponseData);
             if (betShopATM.debug)
             {
                 cbDebug.Checked = true;
@@ -92,6 +92,18 @@ namespace NV10Connector
             return f.ToString("0.00");
         }
 
+        public void GetResponseData(BetShopPushEvent response)
+        {
+            if (this.InvokeRequired)
+            {
+                this.BeginInvoke((MethodInvoker)delegate
+                {
+                    GetResponseData(response);
+                });
+                return;
+            }
+            LogWrite("Push money to server response: " + response.status + " - amt:" + response.amountPushed + ", msg: "+response.messageReceived);
+        }
 
         public void GetResponseData(NV10PollEvent response)
         {

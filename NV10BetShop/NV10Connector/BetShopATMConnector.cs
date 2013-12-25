@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.IO;
 using System.Net;
+using eSSPNV10.SC;
 
 namespace NV10Connector
 {
@@ -20,9 +21,17 @@ namespace NV10Connector
         public int delay;
         public bool encryptSSP = false;
 
-        public BetShopATMConnector(string folderName)
+        public delegate void ThrowedException(Exception inException);
+        private readonly ThrowedException _exceptionThrower;
+
+        public delegate void ReceivedEvent(BetShopPushEvent inEvent);
+        private readonly ReceivedEvent _eventReceiver;
+
+        public BetShopATMConnector(string folderName, ReceivedEvent inEvent, ThrowedException inException)
         {
             LoadConfigFile(folderName);
+            _exceptionThrower = inException;
+            _eventReceiver = inEvent;
         }
 
         private void LoadConfigFile(string folderName)
@@ -125,12 +134,19 @@ namespace NV10Connector
                 {
                     log.WriteLine("EXCEPTION: " + ex.GetType().Name + " - " + ex.Message);
                     log.WriteLine("STACK TRACE: \r\n" + ex.StackTrace);
+                    _exceptionThrower(ex);
                 }
                 else
                 {
                     log.WriteLine("POST: " + message);
                     if (!string.IsNullOrEmpty(responseMessage))
                         log.WriteLine("response: " + responseMessage);
+                    BetShopPushEvent bsEvt = new BetShopPushEvent();
+                    bsEvt.status = BetShopPushEvent.PushStatus.OK;
+                    bsEvt.amountPushed = amount;
+                    bsEvt.messageReceived = responseMessage;
+                    _eventReceiver(bsEvt);
+                    bsEvt = null;
                 }
                 log.Close();
             }

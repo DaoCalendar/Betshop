@@ -151,6 +151,21 @@ namespace eSSPNV10.SC
         private Byte _crcl;
         private Byte _crch;
 
+        //public NV10Request(Byte deviceID)
+        //{
+        //    _deviceID = deviceID;
+        //}
+        
+        public void setDeviceID(Byte deviceID)
+        {
+            _deviceID = deviceID;
+        }
+        
+        public void setLength(Byte length)
+        {
+            _length = length;
+        }
+
         public void AddDataBytes(Byte[] dataToAdd)
         {
             List<Byte> newData = new List<Byte>();
