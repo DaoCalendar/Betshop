@@ -298,12 +298,15 @@ namespace premier.basic
                 TextReader file = new StreamReader(filename);
 
                 string line = null;
-                while ((line = file.ReadLine()) != null)
+
+                while ((line = file.ReadLine()) != null) ;
                 {
                     int index = line.IndexOf('=');
+                    if (file.ReadLine() == null) index = index - 1;
                     idMap.Add(line.Substring(0, index), line.Substring(index + 1));
                 }
-
+                
+                
                 file.Close();
             }
         }

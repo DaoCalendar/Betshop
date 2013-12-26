@@ -74,7 +74,7 @@ namespace premier.parser
                                     {
                                         int startIndex = td.OuterHtml.IndexOf("onmouseover=\"tip('") + "onmouseover=\"tip('".Length;
                                         int endIndex = td.OuterHtml.IndexOfAny(new char[] { ' ', '\"', '\'', '>' }, startIndex);
-                                        sport = td.OuterHtml.Substring(startIndex, endIndex - startIndex + 1);
+                                        sport = td.OuterHtml.Substring(startIndex, endIndex - (startIndex + 1));
                                         if (sport == "Soccer")
                                             sport = "Football";
                                     }
@@ -428,11 +428,12 @@ namespace premier.parser
                             item.FirstHalf = firstHalf;
 
                             int counter = 0;
-                            while (!activeHeader[counter].StartsWith("Match"))
+                            do
                             {
                                 firstHalf.AddString(item[counter]);
                                 counter++;
                             }
+                            while (!activeHeader[counter].StartsWith("Match"));
 
                             firstHalf.AddString(elemets[25]);
                             firstHalf.AddString(elemets[26]);

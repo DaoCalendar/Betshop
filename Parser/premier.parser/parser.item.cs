@@ -129,7 +129,7 @@ namespace premier.parser
 
             sb.Append(", \"Token\":\"" + token + "\"");
 
-            for (int i = 0; i < data.Count; i++)
+            for (int i = 0; i < data.Count ; i++)
             {
                 if (i != Header.HomeTeam && i != Header.AwayTeam)
                 {

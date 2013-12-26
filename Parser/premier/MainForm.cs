@@ -594,7 +594,7 @@ namespace premier
                     else
                     {
                         int index = line.IndexOf('#');
-                        listOfIds.Add(line.Substring(0, index), line.Substring(index + 1));
+                        listOfIds.Add(line.Substring(0, index), line.Substring(index));
                     }
                 }
 

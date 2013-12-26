@@ -18,7 +18,9 @@ namespace premier.parser
         {
             Event = e;
             data = new List<string>();
-            // for (int i = 0; i < lenght; i++) data.Add(string.Empty);
+
+            Int32 length = data.Count;
+            for (Int32 i = 0; i < length - 6; i++) data.Add(string.Empty);
         }
 
         public void Add(string s)
@@ -27,9 +29,22 @@ namespace premier.parser
             {
                 HomeTeam = data.Count;
             }
+            else if (data.Count > Lenght)
+            {
+
+                HomeTeam = data.Count - 1;
+                
+            }
             if (s == "Away team" || s == "away")
             {
                 AwayTeam = data.Count;
+            }
+
+            else if (data.Count > Lenght)
+            {
+
+               
+                AwayTeam = data.Count - 1;
             }
             data.Add(s);
         }
@@ -45,6 +60,7 @@ namespace premier.parser
         {
             get
             {
+                
                 return data[index];
             }
             set
@@ -57,7 +73,7 @@ namespace premier.parser
         {
             int hashCode = Event.GetHashCode();
 
-            for (int i = 0; i < data.Count; i++)
+            for (int i = 0; i < data.Count - 1; i++)
             {
                 hashCode += data[i].GetHashCode() << i;
             }
