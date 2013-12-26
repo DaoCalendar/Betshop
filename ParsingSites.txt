@@ -1,0 +1,10 @@
+1. Tipico
+   URL:
+   Status: Done
+   Komentari: Cestitamo!
+2. Lumi
+   URL: http://www.lumibet.com/live
+   Status: Under development
+   Komentari: Potrebno parsirati ne samo inicijalni layout, nego otvoriti dodatne igre (sim click)
+              i procitati i te kvote
+
