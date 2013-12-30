@@ -45,6 +45,7 @@ namespace premier.parser
         {
             get
             {
+                
                 return data[index];
             }
             set

@@ -31,12 +31,12 @@
             this.Browser = new System.Windows.Forms.WebBrowser();
             this.SuspendLayout();
             // 
-            // webBrowser
+            // Browser
             // 
             this.Browser.Dock = System.Windows.Forms.DockStyle.Fill;
             this.Browser.Location = new System.Drawing.Point(0, 0);
             this.Browser.MinimumSize = new System.Drawing.Size(20, 20);
-            this.Browser.Name = "webBrowser";
+            this.Browser.Name = "Browser";
             this.Browser.Size = new System.Drawing.Size(784, 462);
             this.Browser.TabIndex = 1;
             // 
@@ -47,6 +47,7 @@
             this.ClientSize = new System.Drawing.Size(784, 462);
             this.Controls.Add(this.Browser);
             this.Name = "BrowserForm";
+            this.Load += new System.EventHandler(this.BrowserForm_Load);
             this.ResumeLayout(false);
 
         }

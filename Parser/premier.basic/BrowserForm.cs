@@ -46,5 +46,10 @@ namespace premier
         {
             Text = Browser.DocumentTitle;
         }
+
+        private void BrowserForm_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -33,7 +33,7 @@ namespace premier.parser
             {
 
                 HomeTeam = data.Count - 1;
-                
+
             }
             if (s == "Away team" || s == "away")
             {
@@ -43,7 +43,7 @@ namespace premier.parser
             else if (data.Count > Lenght)
             {
 
-               
+
                 AwayTeam = data.Count - 1;
             }
             data.Add(s);
@@ -60,7 +60,18 @@ namespace premier.parser
         {
             get
             {
-                
+                try
+                {
+                    return data[index];
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine("An error occurred: '{0}'", e);
+                }
+                finally
+                {
+                    index = 16;
+                }
                 return data[index];
             }
             set

@@ -1,6 +1,6 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 11.00
-# Visual Studio 2010
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "premier.tipico", "Premier\premier.tipico.csproj", "{A17A64BE-1806-48FC-80D6-D368A3FF0EA9}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "premier.parser", "premier.parser\premier.parser.csproj", "{E7C16F34-94D8-4C98-BFA3-3DA067585CC2}"
@@ -8,6 +8,11 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "premier.basic", "premier.basic\premier.basic.csproj", "{BD6E7B0F-E651-4E24-84B5-3DEF2D29FCCB}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "premier.results", "premier.results\premier.results.csproj", "{FDAF630E-0C9F-4471-A9F6-886B58E86EEF}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{5D798865-1DBC-4C3A-AB6A-B03B8FF29114}"
+	ProjectSection(SolutionItems) = preProject
+		HTMLPage1.html = HTMLPage1.html
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
