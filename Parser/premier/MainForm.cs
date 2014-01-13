@@ -99,6 +99,7 @@ namespace premier
             forceUpdate = true;
             webBrowser_DocumentCompleted(null, null);
             // ParseHtmlDocument(true);
+
         }
 
         private void webBrowser_DocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e)
@@ -421,6 +422,8 @@ namespace premier
 
                         parser.tipico tipico = new tipico();
                         tipico.PrepareHtml(document);
+                        tipico.ParseHtml(document);
+                        
                         if (!tipico.ReadCompleted)
                         {
                             return;
@@ -430,6 +433,12 @@ namespace premier
                         tipico.DoAll();
 
                         UpdateView();
+
+                        // Write the string to a file.
+                        System.IO.StreamWriter logFile = new System.IO.StreamWriter(@"c:\out"  + ".txt");
+                        logFile.WriteLine(htmlBody);
+                        logFile.Close();
+
 
                         //System.Threading.Thread thread = new System.Threading.Thread(tipico.DoAll);
                         //thread.Start();
@@ -536,6 +545,11 @@ namespace premier
             logPath = Application.StartupPath;
             string filename = Path.Combine(Application.StartupPath, "premier.cfg");
 
+            //System.IO.StreamWriter logFile = new System.IO.StreamWriter(@"c:\out" + ".txt");
+            //logFile.WriteLine("аbc");
+            //logFile.Close(); 
+
+
             if (!File.Exists(filename))
             {
                 filename = Path.Combine(Application.StartupPath, "id.txt");
@@ -571,7 +585,7 @@ namespace premier
                     else if (line.StartsWith("soundInterval#"))
                     {
                         string sSoundInterval = line.Substring("soundInterval#".Length);
-                        int.TryParse(sSoundInterval, out soundInterval);
+                        
                     }
                     else if (line.StartsWith("post#"))
                     {
@@ -635,6 +649,10 @@ namespace premier
 
         void SendUpdate(string message, string id)
         {
+            
+            
+            return;
+
             if (!string.IsNullOrEmpty(message))
             {
                 string responseMessage = string.Empty;
@@ -651,16 +669,19 @@ namespace premier
 
                         using (StreamWriter streamWriter = new StreamWriter(webRequest.GetRequestStream()))
                         {
+
                             streamWriter.Write(message);
                             streamWriter.Close();
                         }
 
                         try
                         {
-                            HttpWebResponse response = (HttpWebResponse)webRequest.GetResponse();
-                            Stream responseStream = response.GetResponseStream();
-                            StreamReader streamReader = new StreamReader(responseStream);
-                            responseMessage = streamReader.ReadToEnd();
+                            //HttpWebResponse response = (HttpWebResponse)webRequest.GetResponse();
+                            //Stream responseStream = response.GetResponseStream();
+                            //StreamReader streamReader = new StreamReader(responseStream);
+                            //responseMessage = streamReader.ReadToEnd();
+
+
                         }
                         catch (Exception ex)
                         {
