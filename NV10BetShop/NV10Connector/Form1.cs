@@ -42,6 +42,7 @@ namespace NV10Connector
             }
 
             betShopATM = new BetShopATMConnector(Application.StartupPath, GetResponseData, GetResponseData);
+            
             if (betShopATM.debug)
             {
                 cbDebug.Checked = true;
@@ -50,11 +51,20 @@ namespace NV10Connector
             {
                 cbDebug.Checked = false;
             }
+
+            if (betShopATM.encryptSSP)
+            {
+                cbEncrypt.Checked = true;
+            }
+            else
+            {
+                cbEncrypt.Checked = false;
+            }
+
             Version version = Assembly.GetEntryAssembly().GetName().Version;
             fileVersion = version.ToString();
             lblAppVer.Text = fileVersion;
-            _nv10sc = new eSSPNV10.SC.NV10Controller(betShopATM.port, 0, GetResponseData, GetResponseData, Application.StartupPath, betShopATM.debug, fileVersion);
-            _nv10sc.encryptSSP = betShopATM.encryptSSP;
+            _nv10sc = new eSSPNV10.SC.NV10Controller(betShopATM.port, 0, GetResponseData, GetResponseData, Application.StartupPath, betShopATM.debug, fileVersion, betShopATM.encryptSSP);            
             if (betShopATM.autoRun)
             {
                 if (betShopATM.delay > 0)
@@ -259,7 +269,7 @@ namespace NV10Connector
                 }
                 if (_nv10sc != null)
                 {
-                    _nv10sc.encryptSSP = true;
+                    _nv10sc._encryptSSP = true;
                 }
             }
             else
@@ -270,7 +280,7 @@ namespace NV10Connector
                 }
                 if (_nv10sc != null)
                 {
-                    _nv10sc.encryptSSP = false;
+                    _nv10sc._encryptSSP = false;
                 }
             }
         }

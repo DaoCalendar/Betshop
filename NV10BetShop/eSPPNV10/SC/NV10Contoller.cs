@@ -25,7 +25,7 @@ namespace eSSPNV10.SC
         public char m_UnitType = '-';
         public int _protocol;
         public bool _ignoreRealValueMultiplyer = false;
-        public bool encryptSSP = false;
+        public bool _encryptSSP = false;
 
         private static Byte SYNC_BYTE = 0x7F;
         private static Int32 NV10_TIMEOUT_READ = 1000;
@@ -44,9 +44,10 @@ namespace eSSPNV10.SC
         //private string logPath = @"C:\Users\Sale\Desktop\NV10Controller.log";
         private string _logPath = @"C:\Users\Sale\Desktop\NV10Controller.log";
 
-        public NV10Controller(string port, byte deviceID, ReceivedEvent inDelegate, ThrowedException inException, string logPath, bool debug, string appVersion)
+        public NV10Controller(string port, byte deviceID, ReceivedEvent inDelegate, ThrowedException inException, string logPath, bool debug, string appVersion, bool encryptSSP)
         {
-
+            _encryptSSP = encryptSSP;
+            _debug = debug;
             _deviceID = deviceID;
             _portName = port;
             _eventReceiver = inDelegate;
@@ -137,7 +138,7 @@ namespace eSSPNV10.SC
             {
                 _crypter.Inited = false;
             }
-            if (!encryptSSP)
+            if (!_encryptSSP)
             {
                 return;
             }
@@ -216,7 +217,7 @@ namespace eSSPNV10.SC
                 }
                 logFile("Sync done");
                 
-                if (!encryptSSP)
+                if (!_encryptSSP)
                 {
                     ExchangeNewKeys();
                 }
