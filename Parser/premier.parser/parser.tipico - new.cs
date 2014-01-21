@@ -461,11 +461,63 @@ namespace premier.parser
         }
         public void CompareData()
         {
-            List<item> allItems = new List<item>();
+            //List<item> allItems = new List<item>();
+
+            //foreach (header h in itemCatalog.Keys)
+            //{
+            //    allItems.AddRange(itemCatalog[h]);
+                
+            //}
+
+            //foreach (header h in data.Keys)
+            //{
+            //    if (!itemCatalog.ContainsKey(h))
+            //    {
+            //        itemCatalog.Add(h, new List<item>());
+            //    }
+
+            //    List<item> items = itemCatalog[h];
+
+
+            //    foreach (item newItem in data[h])
+            //    {
+            //        bool found = false;
+            //        foreach (item oldItem in items)
+            //        {
+            //            //// Write the string to a file.
+                        
+                       
+                        
+            //            if (oldItem.IsSameEvent(newItem))
+            //            {
+            //                found = true;
+
+            //                string update = oldItem.Update(newItem, token);
+            //                if (!string.IsNullOrEmpty(oldItem.Id) && !string.IsNullOrEmpty(update))
+            //                {
+            //                    sendUpdate(update, oldItem.Id);
+            //                }
+
+            //                if (allItems.Contains(oldItem))
+            //                {
+            //                    allItems.Remove(oldItem);
+            //                }
+
+            //                break;
+            //            }
+            //        }
+                    
+                    
+                    
+                    
+                    /////// nadjen upis update-a u file
+
+                     List<item> allItems = new List<item>();
 
             foreach (header h in itemCatalog.Keys)
             {
                 allItems.AddRange(itemCatalog[h]);
+                
             }
 
             foreach (header h in data.Keys)
@@ -477,47 +529,69 @@ namespace premier.parser
 
                 List<item> items = itemCatalog[h];
 
+
                 foreach (item newItem in data[h])
                 {
                     bool found = false;
                     foreach (item oldItem in items)
                     {
+                        //// Write the string to a file.
+                        //// Dodati novi kod
+                        
+                        System.IO.StreamWriter logFile = new System.IO.StreamWriter(@"c:\out.txt");
+                        
+                        UInt16 i = Convert.ToUInt16(newItem.Lenght);
                         if (oldItem.IsSameEvent(newItem))
                         {
                             found = true;
 
                             string update = oldItem.Update(newItem, token);
+                           
                             if (!string.IsNullOrEmpty(oldItem.Id) && !string.IsNullOrEmpty(update))
                             {
                                 sendUpdate(update, oldItem.Id);
+                           }
+                            foreach (List<string> elemets in activeEvents)
+                            {
+                              
+                                for (int n = 0; n < elemets.Count; ++n)
+                                    logFile.WriteLine(newItem.JSON(token) + "  " + elemets[n]);
                             }
+                                 logFile.Close();
 
                             if (allItems.Contains(oldItem))
                             {
                                 allItems.Remove(oldItem);
                             }
-
+                            
                             break;
                         }
+                        logFile.Close();  
                     }
-
                     if (!found)
                     {
                         items.Add(newItem);
 
-                        if (listOfIds.ContainsValue(newItem.ToString()))
-                        {
-                            foreach (string id in listOfIds.Keys)
+                        
+                        foreach (string id in listOfIds.Keys)
                             {
+                                
+                                
                                 if (newItem.ToString() == listOfIds[id])
                                 {
                                     newItem.Id = id;
                                     sendUpdate(newItem.JSON(token), newItem.Id);
-                                    break;
+                                    
+                                    
                                 }
+
+
                             }
-                        }
+                            //logFile.Close();
+                        //    break;
+                        //}
                     }
+
                 }
             }
 
@@ -585,7 +659,6 @@ namespace premier.parser
                             {
                                 elemets.Add(td.InnerText != null ? td.InnerText.Trim().Replace("Soccer", "Football") : null);
                                 elemetsCheck.Add(td.OuterHtml);
-
                                 if (string.IsNullOrEmpty(sport))
                                 {
                                     if (td.OuterHtml.Contains("onmouseover=\"tip('"))
@@ -602,8 +675,11 @@ namespace premier.parser
                                     string redCard = td.OuterHtml.TrimStart().Substring(34, 1);
                                     if (string.IsNullOrEmpty(redCardHome)) redCardHome = redCard;
                                     else if (string.IsNullOrEmpty(redCardAway)) redCardAway = redCard;
+                                   
                                 }
                             }
+
+                            
                         }
 
                         if (check.StartsWith("<div id=top-event-"))
@@ -657,12 +733,6 @@ namespace premier.parser
            
 
             //running events
-
-
-
-
-
-
 
             var divRunning = document.GetElementById("_program_conference_runningeventssection");
             var divComming = document.GetElementById("_program_conference_upcoming1eventssection");
@@ -737,15 +807,6 @@ namespace premier.parser
                                     
                                 }
                             }
-
-
-
-
-
-
-
-
-
 
                                 //List<string> elemets = new List<string>();
 

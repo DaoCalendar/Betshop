@@ -306,6 +306,8 @@ namespace premier
                         if (!string.IsNullOrEmpty(i.Id))
                         {
                             SendUpdate(i.JSON(textBoxToken.Text), i.Id);
+                           
+
                         }
                     }
                 }
@@ -422,8 +424,8 @@ namespace premier
 
                         parser.tipico tipico = new tipico();
                         tipico.PrepareHtml(document);
-                        tipico.ParseHtml(document);
-                        
+
+
                         if (!tipico.ReadCompleted)
                         {
                             return;
@@ -431,43 +433,56 @@ namespace premier
 
                         tipico.InitAll(itemCatalog, SendUpdate, textBoxToken.Text, listOfIds);
                         tipico.DoAll();
+                        tipico.ParseHtml(document);
 
+
+
+                        //// dopisani kod 1/14/2014
+
+                        //////// Write the string to a file.
+                        //System.IO.StreamWriter logFile = new System.IO.StreamWriter(@"c:\out.txt");
+                        //logFile.WriteLine(labelTimeSinceLastUpdate.Text);
+                        //logFile.Close();
+
+                        
                         UpdateView();
 
-                        // Write the string to a file.
-                        System.IO.StreamWriter logFile = new System.IO.StreamWriter(@"c:\out"  + ".txt");
-                        logFile.WriteLine(htmlBody);
-                        logFile.Close();
 
+                                    //System.Threading.Thread thread = new System.Threading.Thread(tipico.DoAll);
+                                    //thread.Start();
+                                }
 
-                        //System.Threading.Thread thread = new System.Threading.Thread(tipico.DoAll);
-                        //thread.Start();
-                    }
+                                TimeSpan difference = DateTime.Now.Subtract(lastUpdateTime);
+                                labelTimeSinceLastUpdate.Text = difference.Hours.ToString() + ":" + difference.Minutes.ToString("d2") + ":" + difference.Seconds.ToString("d2");
+                                labelTimeSinceLastUpdate.ForeColor = difference.Minutes != 0 ? Color.Red : (difference.Seconds < 30 ? Color.Black : Color.Blue);
 
-                    TimeSpan difference = DateTime.Now.Subtract(lastUpdateTime);
-                    labelTimeSinceLastUpdate.Text = difference.Hours.ToString() + ":" + difference.Minutes.ToString("d2") + ":" + difference.Seconds.ToString("d2");
-                    labelTimeSinceLastUpdate.ForeColor = difference.Minutes != 0 ? Color.Red : (difference.Seconds < 30 ? Color.Black : Color.Blue);
-
-                    if (soundPlayed == false && difference.TotalSeconds > soundInterval)
-                    {
-                        soundPlayed = true;
-                        try
-                        {
-                            new SoundPlayer(soundToPlay).Play();
+                                if (soundPlayed == false && difference.TotalSeconds > soundInterval)
+                                {
+                                    soundPlayed = true;
+                                    try
+                                    {
+                                        new SoundPlayer(soundToPlay).Play();
+                                    }
+                                    catch (Exception ex)
+                                    {
+                                        System.Diagnostics.Debug.WriteLine(ex.Message);
+                                    }
+                                }
+                            }
                         }
-                        catch (Exception ex)
-                        {
-                            System.Diagnostics.Debug.WriteLine(ex.Message);
-                        }
+                        //catch (Exception ex)
+                        //{
+                        //    // SendUpdate(ex.Message, string.Empty);
+                        //    LogError(ex, false);
+                        //}
+                        //}
+
+
                     }
-                }
-            }
-            //catch (Exception ex)
-            //{
-            //    // SendUpdate(ex.Message, string.Empty);
-            //    LogError(ex, false);
-            //}
-        }
+                
+
+            
+              
 
         #region Grid - virtual mode
 
@@ -544,11 +559,6 @@ namespace premier
         {
             logPath = Application.StartupPath;
             string filename = Path.Combine(Application.StartupPath, "premier.cfg");
-
-            //System.IO.StreamWriter logFile = new System.IO.StreamWriter(@"c:\out" + ".txt");
-            //logFile.WriteLine("аbc");
-            //logFile.Close(); 
-
 
             if (!File.Exists(filename))
             {
@@ -649,8 +659,9 @@ namespace premier
 
         void SendUpdate(string message, string id)
         {
-            
-            
+
+           // string messageUpdate = message;
+
             return;
 
             if (!string.IsNullOrEmpty(message))
@@ -672,6 +683,7 @@ namespace premier
 
                             streamWriter.Write(message);
                             streamWriter.Close();
+                            
                         }
 
                         try
@@ -680,6 +692,11 @@ namespace premier
                             //Stream responseStream = response.GetResponseStream();
                             //StreamReader streamReader = new StreamReader(responseStream);
                             //responseMessage = streamReader.ReadToEnd();
+
+                            ////// Write the string to a file.
+                            //System.IO.StreamWriter logFile = new System.IO.StreamWriter(@"c:\out1" + ".txt");
+                            //logFile.WriteLine(message);
+                            //logFile.Close();
 
 
                         }
