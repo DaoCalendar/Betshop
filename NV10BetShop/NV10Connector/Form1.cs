@@ -134,7 +134,18 @@ namespace NV10Connector
                 int noteVal = GetChannelValue(response.EventData);
                 betShopATM.AppendText("Credit " + FormatToCurrency(noteVal) + "\r\n", noteVal);
             }
-            else if(response.EventType == NV10PollEvent.NV10PollEventType.Disabled)
+            if (response.EventType == NV10PollEvent.NV10PollEventType.ReadNote)
+            {
+                int noteVal = GetChannelValue(response.EventData);
+                if (noteVal > 0)
+                {
+                    ///todo:send hold and here try to send money to server.
+                    ///if send fails, issue reject
+                    ///else poll further and accept note
+                }
+                betShopATM.AppendText("Credit " + FormatToCurrency(noteVal) + "\r\n", noteVal);
+            }
+            else if (response.EventType == NV10PollEvent.NV10PollEventType.Disabled)
             {
                 _nv10sc.Enable();
             }
