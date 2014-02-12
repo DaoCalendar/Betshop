@@ -531,6 +531,46 @@ namespace eSSPNV10.SC
             logFile("Stop poll done");
         }
 
+        public NV10PollEvent Hold()
+        {
+            NV10Response replyData;
+            NV10PollEvent evt = new NV10PollEvent(NV10PollEvent.NV10PollEventType.Disabled, 0);
+            if (System.Threading.Monitor.TryEnter(_sendMonitor, 0))
+            {
+                try
+                {
+                    replyData = SendData(NV10Request.NV10RequestTemplates.NV10Hold);
+                    evt = NV10PollEvent.Parse(replyData);
+                    return evt;
+                }
+                finally
+                {
+                    System.Threading.Monitor.Exit(_sendMonitor);
+                }
+            }
+            return evt;            
+        }
+
+        public NV10PollEvent RejectNote()
+        {
+            NV10Response replyData;
+            NV10PollEvent evt = new NV10PollEvent(NV10PollEvent.NV10PollEventType.Disabled, 0);
+            if (System.Threading.Monitor.TryEnter(_sendMonitor, 0))
+            {
+                try
+                {
+                    replyData = SendData(NV10Request.NV10RequestTemplates.NV10RejectNote);
+                    evt = NV10PollEvent.Parse(replyData);
+                    return evt;
+                }
+                finally
+                {
+                    System.Threading.Monitor.Exit(_sendMonitor);
+                }
+            }
+            return evt;
+        }
+
         private void Poll()
         {
             try

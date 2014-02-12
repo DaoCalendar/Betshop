@@ -20,6 +20,7 @@ namespace NV10Connector
         private eSSPNV10.SC.NV10Controller _nv10sc;
         private BetShopATMConnector betShopATM;
         private string fileVersion = "";
+        private bool holded = false;
 
         public MainForm()
         {
@@ -112,6 +113,14 @@ namespace NV10Connector
                 });
                 return;
             }
+            if (response.status == BetShopPushEvent.PushStatus.OK)
+            {
+                if (holded)
+                {
+                    holded = false;
+                    _nv10sc.StartPoll();
+                }
+            }
             LogWrite("Push money to server response: " + response.status + " - amt:" + response.amountPushed + ", msg: "+response.messageReceived);
         }
 
@@ -129,21 +138,32 @@ namespace NV10Connector
             {
                 LogWrite("Poll response: " + response.EventType + (NV10PollEvent.dataEvents.Contains(response.EventType) ? ", Data: " + response.EventData.ToString() : ""));
             }
-            if (response.EventType == NV10PollEvent.NV10PollEventType.CreditNote)
-            {
-                int noteVal = GetChannelValue(response.EventData);
-                betShopATM.AppendText("Credit " + FormatToCurrency(noteVal) + "\r\n", noteVal);
-            }
+            //if (response.EventType == NV10PollEvent.NV10PollEventType.CreditNote)
+            //{
+            //    int noteVal = GetChannelValue(response.EventData);
+            //    betShopATM.AppendText("Credit " + FormatToCurrency(noteVal) + "\r\n", noteVal);
+            //}
             if (response.EventType == NV10PollEvent.NV10PollEventType.ReadNote)
             {
                 int noteVal = GetChannelValue(response.EventData);
                 if (noteVal > 0)
                 {
-                    ///todo:send hold and here try to send money to server.
-                    ///if send fails, issue reject
-                    ///else poll further and accept note
+                    _nv10sc.StopPoll();
+                    FormatToCurrency(noteVal);
+                    NV10PollEvent evt = _nv10sc.Hold();
+                    if (evt.EventType == NV10PollEvent.NV10PollEventType.Ok)
+                    {
+                        holded = true;
+                    }
+                    else
+                    {
+                        LogWriteSynched("Couldnt issue HOLD!");
+                        return;
+                    }
+                    //issue money push, check what happened in events
+                    betShopATM.AppendText("Credit " + FormatToCurrency(noteVal) + "\r\n", noteVal);                    
                 }
-                betShopATM.AppendText("Credit " + FormatToCurrency(noteVal) + "\r\n", noteVal);
+                
             }
             else if (response.EventType == NV10PollEvent.NV10PollEventType.Disabled)
             {
@@ -161,7 +181,17 @@ namespace NV10Connector
                 });
                 return;
             }
-            _nv10sc.StopPoll();
+            if (!holded)
+            {
+                _nv10sc.StopPoll();
+            }
+            else
+            {
+                holded = false;
+                _nv10sc.RejectNote();
+                _nv10sc.StartPoll();
+            }
+
             LogWrite("Poll exception: " + exc.GetType().Name + ", " + exc.Message);
             LogWrite("Source: ");
             LogWrite(exc.Source);

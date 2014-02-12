@@ -154,6 +154,18 @@ namespace eSSPNV10.SC
                 }
             }
 
+            public static NV10Request NV10RejectNote
+            {
+                get
+                {
+                    return new NV10Request()
+                    {
+                        _length = 0x1,
+                        _data = new Byte[] { 0x8 }
+                    };
+                }
+            }
+
         }
 
         private Byte STX = 0x7f;

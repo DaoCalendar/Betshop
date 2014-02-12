@@ -1,0 +1,1386 @@
+#live .seperator {
+	background: url(../img/live/separator-BEF1A47F9E75C969BF4C18338F34F3C6.gif) no-repeat center 0;
+}
+
+/* --- goalbox --- */
+
+#live .goalbox {
+	float: left;
+	width: 212px;
+	font-style: italic;
+	line-height: 30px; /* sonst entsteht eine l�cke nach dem GoalBox-Panelvorher: 32px*/
+	border-left: 1px solid #eee;
+	white-space: nowrap;
+	overflow: hidden;
+}
+
+#live .goalbox:first-child {
+	border: 0;
+}
+
+#goalbox_penalty, #goalbox_highlight {
+	z-index: 2;
+	position: absolute;
+	width: 755px;
+	height: 32px;
+	background: #77a5b4;
+	text-align: center;
+	margin: 0 auto;
+	display: none;
+}
+
+#live .goalbox_all {
+	line-height: 32px;
+	color: #fff;
+	display: inline-block;
+}
+
+#live .goalbox.ico_yellow-card, #live .goalbox_all.ico_yellow-card, #live .his_row.ico_yellow-card {
+	background: url(../img/live/icon_yellowcard-41438F405CC4A5D94C8BD75CF6BC7E6C.png) no-repeat 9px 3px;
+	padding-left: 38px;
+}
+
+#live .goalbox.ico_red-card, #live .goalbox_all.ico_red-card, #live .his_row.ico_red-card {
+	background: url(../img/live/icon_redcard-13018C82C98DA75F56AB93C0BC6FA0C0.png) no-repeat 9px 3px;
+	padding-left: 38px;
+}
+
+#live .goalbox.ico_corner-kick, #live .goalbox_all.ico_corner-kick, #live .his_row.ico_corner-kick {
+	background: url(../img/live/icon_corner-8B9E1F4A8450D5A4C5DB10909E987835.png) no-repeat 9px 3px;
+	padding-left: 38px;
+}
+
+#live .goalbox.ico_point, #live .goalbox_all.ico_point, #live .his_row.ico_point {
+	background: url(../img/live/icon_goal-6B38F5E1D04A444A30DBBDF42B62E0FE.png) no-repeat 9px 3px transparent;
+	padding-left: 38px;
+}
+
+#live .goalbox.ico_offside, #live .goalbox_all.ico_offside, #live .his_row.ico_offside {
+	background: url(../img/live/icon_offside-8B57FD55FCCE82098D7A1EF8E6462614.png) no-repeat 9px 3px transparent;
+	padding-left: 38px;
+}
+
+#live .goalbox.ico_goal-kick, #live .goalbox_all.ico_goal-kick, #live .his_row.ico_goal-kick {
+	background: url(../img/live/icon_goalkick-C147AE698A95AAC30CD73FA419EE32C7.png) no-repeat 9px 3px transparent;
+	padding-left: 38px;
+}
+
+#live .goalbox.ico_substitution, #live .goalbox_all.ico_substitution, #live .his_row.ico_substitution {
+	background: url(../img/live/icon_change-77650DD568F4D1CE247ABDD10AE3B54B.png) no-repeat 9px 3px transparent;
+	padding-left: 38px;
+}
+
+#live .goalbox.ico_foul, #live .goalbox_all.ico_foul, #live .his_row.ico_foul {
+	background: url(../img/live/icon_pipe-D90E6CC5CD6B6EF86E6DC81BEA780608.png) no-repeat 9px 3px transparent;
+	padding-left: 38px;
+}
+
+
+#live .his_row.ico_yellow-card, #live .his_row.ico_red-card, #live .his_row.ico_corner-kick, #live .his_row.ico_point,
+#live .his_row.ico_offside, #live .his_row.ico_goal-kick, #live .his_row.ico_substitution, #live .his_row.ico_foul {
+	background-position: 5px 4px;
+}
+
+/* --- history layer --- */
+
+#history_layer {
+	z-index: 100;
+	position: absolute;
+	margin: 0px 0 0 756px;
+	width: 225px;
+	padding-left: 11px;
+	display: none;
+}
+
+#history_pointer {
+	z-index: 31;
+	position: absolute;
+	top: 8px;
+	left: 0;
+	width: 12px;
+	height: 22px;
+	background: url(../img/live/history_pointer-8D1E14AD36E88C3DEF910145665C4F85.gif) no-repeat;
+}
+
+#history_inner {
+	line-height: 12px;
+	color: #666;
+	border: 1px solid #ccc;
+	background-color: #eee;
+	-moz-box-shadow: 0px 0px 3px #999;
+	-webkit-box-shadow: 0px 0px 3px #999;
+	box-shadow: 0px 0px 3px #999;
+}
+
+#history_inner .his_row {
+	height: 29px;
+	width: 185px;
+	white-space: nowrap;
+	overflow: hidden;
+	border-top: 1px solid #ccc;
+	padding: 4px 0 0 40px;
+}
+
+#history_inner .his_row:first-child {
+	border: 0
+}
+
+#live .head_1 .ico_soccer {
+	background: url(../img/sporticons/icon_soccer-BD29B290C9CE321C12ED00624B2E471F.png) no-repeat 9px 0px;
+}
+
+#live .head_1 .ico_tennis {
+	background: url(../img/sporticons/icon_tennis-054AE0D55AD95C25F356F09B611CCE94.png) no-repeat 9px 0px;
+}
+
+#live .row {
+	line-height: 24px;
+	border-top: 1px solid #ccc;
+}
+
+#live .head_1 {
+	border-top: 0;
+	background: #c1c1c1; /* Old browsers */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #cccccc), color-stop(100%, #bababa)); /* Saf4+, Chrome */
+	background: -webkit-linear-gradient(top, #cccccc 0%, #bababa 100%); /* Chrome 10+, Saf5.1+ */
+	background:    -moz-linear-gradient(top, #cccccc 0%, #bababa 100%); /* FF3.6+ */
+	background:     -ms-linear-gradient(top, #cccccc 0%, #bababa 100%); /* IE10+ */
+	background:      -o-linear-gradient(top, #cccccc 0%, #bababa 100%); /* Opera 11.10+ */
+	background:         linear-gradient(top, #cccccc 0%, #bababa 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#cccccc', endColorstr='#bababa',GradientType=0); /* IE6-9 */
+}
+
+#live .head_2 {
+	color: #fff;
+	border-top: 0;
+	background: #888888; /* Old browsers */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #9a9a9a), color-stop(100%, #686868)); /* Saf4+, Chrome */
+	background: -webkit-linear-gradient(top, #9a9a9a 0%, #686868 100%); /* Chrome 10+, Saf5.1+ */
+	background:    -moz-linear-gradient(top, #9a9a9a 0%, #686868 100%); /* FF3.6+ */
+	background:     -ms-linear-gradient(top, #9a9a9a 0%, #686868 100%); /* IE10+ */
+	background:      -o-linear-gradient(top, #9a9a9a 0%, #686868 100%); /* Opera 11.10+ */
+	background:         linear-gradient(top, #9a9a9a 0%, #686868 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#9a9a9a', endColorstr='#686868',GradientType=0); /* IE6-9 */
+}
+
+#live .event-row.odd, #live .comp-result-set.odd  {
+	background: #ececec; /* Old browsers */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #f8f8f8), color-stop(100%, #e9e9e9)); /* Saf4+, Chrome */
+	background: -webkit-linear-gradient(top, #f8f8f8 0%, #e9e9e9 100%); /* Chrome 10+, Saf5.1+ */
+	background:    -moz-linear-gradient(top, #f8f8f8 0%, #e9e9e9 100%); /* FF3.6+ */
+	background:     -ms-linear-gradient(top, #f8f8f8 0%, #e9e9e9 100%); /* IE10+ */
+	background:      -o-linear-gradient(top, #f8f8f8 0%, #e9e9e9 100%); /* Opera 11.10+ */
+	background:         linear-gradient(top, #f8f8f8 0%, #e9e9e9 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#e9e9e9',GradientType=0); /* IE6-9 */
+}
+
+#live .c_1 {
+	float: left;
+	width: 38px;
+}
+#live .c_1.combiArrow{
+	margin-left: 7px;
+}
+
+#live .c_2 {
+	float: left;
+	width: 230px;
+	border-left: 1px solid #fff;
+	white-space: nowrap;
+	overflow: hidden;
+}
+
+/* komplette Zeile hinter .c_1 */
+#live .c_2.all {
+	width: 715px;
+}
+
+#live .head_1 .c_2, #live .head_2 .c_2 {
+	width: 231px;
+	border: 0;
+}
+
+#live .c_3 {
+	float: left;
+	width: 120px;
+	border-left: 1px solid #fff;
+	white-space: nowrap;
+	overflow: hidden;
+	/*scheinbar wg leezeichen wird sont die h�he von der Zeile ausgedruckt, was alles kaputt macht*/
+	height: 24px;
+}
+
+#live .head_1 .c_3, #live .head_2 .c_3 {
+	width: 121px;
+	border: 0;
+}
+
+/* zwei Spalten */
+#live .c_3.double {
+	width: 241px;
+}
+
+/* zwei Spalten */
+#live .c_3.triple {
+	width: 362px;
+}
+
+/* vier Spalten */
+#live .c_3.quattro {
+	width: 483px;
+}
+
+#live .c_3.topcomp_a {
+	width: 215px;
+}
+
+#live .c_3.topcomp_b {
+	width: 200px;
+}
+
+#live .c_3.topcomp_c {
+	width: 82px;
+}
+
+#live .c_blue {
+	color: #528494;
+}
+
+#live .c_4 {
+	float: left;
+	width: 705px;
+	padding-left: 9px;
+	white-space: nowrap;
+	overflow: hidden;
+}
+
+#live .c_4.combiText{
+	width:698px !important;
+}
+#live .c_comment {
+	background: url(../img/warning_2-0CC1300FA768FBFEE0A9F34E3BC82A62.png) no-repeat 12px 5px #fff3b2;
+	padding-left: 42px;
+}
+
+#live .c_injury {
+	background: url(../img/injuryTimeIcon-7F8576A7E10C440CE1C9FDDCBA49178B.png) no-repeat 8px 5px #fff3b2;
+	padding-left: 42px;
+}
+
+#live .c_pointer {
+	position: absolute;
+	z-index: 10;
+	width: 33px;
+	height: 13px;
+	background: url(../img/live/livecomment-76912CF3B195DC44D36AF0708EE02909.png) no-repeat;
+	margin-left: 14px;
+}
+
+#live .time {
+	/*line-height darf nicht ver�ndert werden, sonst geht die Darstellung von HZ-Zeilen 
+	in Firefox kaputt*/
+	line-height: 24px;
+	text-align: center;
+}
+
+#live .play_symbol {
+	width: 24px; 
+	height: 24px;
+	/*f�r dumme IE 7 sonst verschiebt sich die hz zeile: http://www.webdevout.net/css-hacks*/
+	*height: 21px;
+}
+/*f�r dumme IE 7 sonst verschieben sich in der Zeitleiste die Teamnamen und Spielpunkte beim �ffnen der Wettschein-Detail Ansicht*/
+.ieHeight {
+ *height: 100%;
+}
+
+#live .play_symbol_11m {
+	width: 38px; 
+	height: 24px;
+	/*f�r dumme IE 7 sonst verschiebt sich die hz zeile: http://www.webdevout.net/css-hacks*/
+	*height: 21px;
+}
+
+/*der oberste Border wird von der ersten Wettart-Zeile gesetzt*/
+#live .border_ccc {
+	border-top: 0px;	
+}
+
+#live .even .pulsation {
+	color: #fff;
+	background: url(../img/live/blink_1-D60B41FF19D21B1C3970DE47D18BDA52.gif) repeat;
+}
+
+#live .pulsation {
+	color: #fff;
+	background: url(../img/live/blink_2-A6AFE2300DC5E25BB6A52E4566833047.gif) repeat;
+}
+
+#live .hz {
+	color: #fff;
+	background-color: #e29b25;
+}
+
+#live .time .scale {
+	z-index: 2;
+	position: absolute;
+	width: 32px;
+    height: 3px;
+    margin: 18px 0 0 3px;
+    /*f�r ie 7*/
+    *margin: 14px 0 0 -8px;
+}
+
+#live .time .scale_img {
+	background: url(../img/live/p_white-320923438144B5D457EDCC7F16CF8974.gif);
+}
+
+#live .type {
+	float: left;
+	width: 40px;
+	line-height: 12px;
+	text-align: center;
+	color: #999;
+	white-space: nowrap;
+	overflow: hidden;
+	padding-top: 6px;
+}
+
+#live .type.section-score {
+	width: 46px;
+}
+
+#live .type.current-service {
+	width: 37px;
+}
+
+#live .topcomp_b .type {
+	white-space: normal;
+}
+
+#live .type.tennis {
+	background: url(../img/sporticons/icon_tennis_racket-6005D089D94C8D76879633E5794DA962.png) no-repeat 50% 6px;
+}
+
+#live .type.tennis.tie-break {
+	background: url(../img/sporticons/icon_tennis_racket_small-4AB41E6F551926DB9E9FF91134556AD3.png) no-repeat 50% 6px;
+}
+
+#live .type.table-tennis {
+	height: 18px;
+	background: url(../img/sporticons/icon_table-tennis_racket-1E6E21D1C341C0F4845A2A00EBCFBD78.png) no-repeat 50% 2px;
+}
+
+#live .team {
+	width: 88px;
+	float: left;
+	line-height: 24px;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	margin: 0 3px;
+}
+
+/*zB bei Basketball Spielstand 100:100*/
+#live .team.score-long {
+	width: 90px;
+}
+
+#live .event .team {
+	width: 104px;
+}
+
+#live .team.redcard_1 {
+	width: 76px;
+	padding-left: 18px;
+	background: url(../img/live/redcard_1-B8813529E040468297146F61DB0A3C89.png) no-repeat;
+}
+
+#live .team.redcard_2 {
+	width: 76px;
+	padding-left: 18px;
+	background: url(../img/live/redcard_2-BB594668054CD6B314611A14BD2EC2CF.png) no-repeat;
+}
+
+#live .team.redcard_3 {
+	width: 76px;
+	padding-left: 18px;
+	background: url(../img/live/redcard_3-BEBD0F482B678A2DBA06DBF73EDBD505.png) no-repeat;
+}
+
+#live .team.redcard_4 {
+	width: 76px;
+	padding-left: 18px;
+	background: url(../img/live/redcard_4-01D5A232C3AB5F8DAC1F574A7B33FA1C.png) no-repeat;
+}
+
+/*blinken von Roten karten*/
+#live .team.redcard-holder.invisible {
+    background-image: url(../img/p-5459177B437C1911EF8A808C92C8D7C5.gif);
+    visibility: inherit;
+}
+
+
+#live .score {
+	width: 42px;
+	float: left;
+	line-height: 24px;
+	text-align: center;
+	white-space: nowrap;
+	overflow: hidden;
+}
+
+/*zB bei Basketball Spielstand 100:100*/
+#live .score.score-long {
+	width: 38px;
+}
+
+#live .score img {
+	margin-top: 2px;
+}
+
+#live .event .score {
+	width: 10px;
+}
+
+.c_but_base {
+	/*margin-left ge�ndert weil sonst nicht die breite passt*/
+	width: 36px;
+	height: 24px;
+	line-height: 24px;
+	font-size: 11px;
+	text-align: center;
+	font-family: Arial, Helvetica, sans-serif;
+	border: 0;
+	background: none;
+	vertical-align: middle;
+	margin-left: 0px; /*wegen durch jsp/refreshframework eingef�gten leerzeichen entfernt: margin-left: 3px;*/
+	/*f�r dumme IE 7: http://www.webdevout.net/css-hacks*/
+	*margin-left: 2px; /*wegen durch jsp/refreshframework eingef�gten leerzeichen entfernt: margin-left: 3px;*/
+	cursor: pointer;
+}
+
+/*workaround f�r das problem, dass refreshFramework bzw jsps leerzeichen einf�gen
+* h�ngt mit dem margin-left von .c_but_base zusammen
+*/
+.c_but_base:first-child {
+	margin-left:2px;
+}
+
+/*nich gedruckt*/
+.c_but, .c_but_paused {
+	background: url(../img/live/but-7B0C800941C82DDFA2A363D9760F9C4D.gif) 50% 50% no-repeat;
+}
+
+/*nicht gedruckt, quote steigt hoch*/
+.c_but_up {
+	background: url(../img/live/but_up-1703047B9FDCFA1FB5656D347A02849F.gif) no-repeat 50% 50%;
+}
+
+/*nicht gedruckt, quote geht runter*/
+.c_but_down {
+	background: url(../img/live/but_down-5ED2561842CB18FC41F90E6534F9A081.gif) no-repeat 50% 50%;
+}
+
+/*gedruckt*/
+.c_but_on, .c_but_on_paused {
+	background: url(../img/live/but_on-A40FC56549C3F736A2E6EEA0F2791A5D.gif) no-repeat 50% 50%;
+	color: #fff;
+	font-weight: bold;
+}
+
+/*gedruckt, quote steigt hoch*/
+.c_but_on_up {
+	background: url(../img/live/but_on_up-2A8E9383763BE0B498735D3A24543B58.gif) no-repeat 50% 50%;
+	color: #fff;
+	font-weight: bold;
+}
+
+/* gedruckt, quote geht runter*/
+.c_but_on_down {
+	background: url(../img/live/but_on_down-77DD01195FF02565CDDCA4FC4E243F68.gif) no-repeat 50% 50%;
+	color: #fff;
+	font-weight: bold;
+}
+
+.c_but:hover, .c_but_up:hover, .c_but_down:hover {
+	font-weight: bold;
+	color: #db0036;
+}
+
+.c_but_on:hover, .c_but_on_up:hover, .c_but_on_down:hover {
+	color: #fff;
+}
+
+/*gesperrt, nicht gedruckt*/
+.c_but_paused {
+	color: #aaa;
+	cursor: default;
+}
+
+.c_but_paused:hover {
+	font-weight: normal;
+}
+
+/*gesperrt, gedruckt*/
+.c_but_on_paused {
+	color: #444;
+	cursor: default;
+}
+
+.c_but_off {
+	cursor: default;
+}
+
+#live .arrow {
+	background: url(../img/live/arrow-1789B7124D287E68838E2072DAAD6564.gif) no-repeat 50% 50%;
+}
+
+#live .arrow.on {
+	background: url(../img/live/arrow_on-432E57C789471D01AB5E3FFFC3E2658A.gif) no-repeat 50% 50%;
+}
+
+#live .next_icon_1 {
+	width: 16px;
+	line-height: 16px;
+	padding-top: 4px;
+}
+
+#live .next_icon_2 {
+	width: 28px;
+	line-height: 16px;
+	padding: 4px 6px 0 4px;
+}
+
+#live .next_more {
+	width: 39px;
+	text-align: center;
+	background: #fff;
+	border-left: 1px solid #ccc;
+}
+
+#live .next_more.big {
+	width: 121px;
+}
+
+/*
+#live .next_more.topcomp {
+	height: 24px;
+	line-height: 24px;
+	border-top: 1px solid #ccc;
+	padding-top: 100px;
+}
+
+#live .next_more.topcomp.on {
+	padding-top: 350px;
+}
+*/
+.sp_bets {
+	display: none;
+}
+
+.sp_bets_cell {
+	float: left;
+	width: 70px;
+	border-left: 1px solid #ccc;
+}
+
+.sp_bets .quote_txt {
+	float: left;
+	white-space: nowrap;
+	overflow: hidden;
+}
+
+.sp_bets .quote_but {
+	float: right;
+	width: 39px;
+	text-align: center;
+	padding-right: 1px;
+}
+
+.multiline .sp_bets_cell {
+	border-top: 1px solid #ccc;
+}
+
+
+/* ### Top Game ### */
+
+/* --- Topbar --- */
+
+#live .topbar {
+	z-index: 2;
+	position: absolute;
+	width: 754px;
+	height: 30px;
+	font-size: 14px;
+	line-height: 30px;
+	color: #fff;
+	background: url(../img/live/topbar_bg-65E3A094AE3EEDB34EC15BB73CCC106F.png) repeat-x;
+	padding-bottom: 4px;
+}
+
+#live .topbar div {
+	border-left: 1px solid #747474;
+}
+
+#live .topbar div:first-child {
+	border: 0;
+}
+
+#live .topbar div.counter_bg {
+	width: 17px;
+	height: 17px;
+	font-size: 11px;
+	line-height: 18px;
+	text-align: center;
+	color: #444;
+	border: 0;
+	border-radius: 3px;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	-moz-box-shadow: 0px 1px 2px #666 inset;
+	-webkit-box-shadow: 0px 1px 2px #666 inset;
+	box-shadow: 0px 1px 2px #666 inset;
+	background: #ccc;
+	margin: 6px 6px 0 6px;
+}
+
+#live .sup {
+	z-index: 2;
+	position: relative;
+	top: -0.5em;
+	font-size: 9px;
+	font-weight: normal;
+	line-height: 10px;
+}
+
+/* --- Liveticker --- */
+
+#live .et .topbar {
+	width: 202px;
+	height: 26px;
+	background: none;
+	margin-top: -30px;
+	border-left: 1px solid #747474;
+}
+
+#live .et {
+	z-index: 2;
+	position: absolute;
+	width: 202px;
+	color: #333;
+	border-left: 1px solid #ccc;
+	border-bottom: 1px solid #ccc;
+	margin: 30px 0 0 550px;
+}
+
+#live .et .viewport {
+	width: 194px;
+	height: 170px;
+	line-height: 20px;
+	overflow: hidden;
+	position: relative;
+}
+
+#live .et .viewport.on {
+	height: 260px;
+}
+
+#live .et .ticker_col_1, #live .et .ticker_col_2, .ticker_col_3 {
+	float: left;
+	width: 150px;
+	/*white-space: nowrap; - entfernt, damit die Langen Infos auf die n�chste Zeile gehen*/
+	overflow: hidden;
+	word-wrap: break-word;
+}
+
+#live .et .ticker_col_1 {
+	width: 34px;
+	padding-left: 6px;
+}
+
+#live .et .ticker_col_3 {
+	width: 184px;
+	padding-left: 6px;
+}
+
+/* --- Option --- */
+
+#live .option_but {
+	width: 34px;
+	height: 30px;
+	background: url(../img/live/option_but-9A33873BCA5033F7E5CE6146ED9FD54E.png) no-repeat 6px 6px;
+	cursor: pointer;
+}
+
+#live .option_but.on {
+	background: url(../img/live/option_but_on-C4DCBD901914DCF9BF23B1CE66F4641A.png) no-repeat 6px 6px;
+}
+
+#live .option {
+	z-index: 4;
+	position: absolute;
+	width: 176px;
+	background: url(../img/live/option_bg_top-1BEB8EAFE2AC896A4722F8FD0ABEAA37.png) no-repeat;
+	padding-top: 15px;
+	margin: 26px 0 0 577px;
+	display: none;
+}
+
+#live .option .cont {
+	width: 168px;
+	font-size: 11px;
+	font-weight: bold;
+	line-height: 18px;
+	color: #fff;
+	background: url(../img/live/option_bg_bot-28992BE063502BA32B5CDABBF4C904E8.png) no-repeat 0 bottom;
+	padding: 0 4px 12px;
+}
+
+#live .option_row:hover {
+	background: #5c5c5c;
+}
+
+#live .option_c1 {
+	width: 86px;
+	overflow: hidden;
+	white-space: nowrap;
+	padding: 0 2px 0 12px;
+}
+
+#live .option_c2 {
+	width: 26px;
+	height: 12px;
+	background: url(../img/live/option_tog_off-0C8BD044505E9BE6A7731E588ACF8E40.png) no-repeat;
+	display: block;
+	margin: 3px 0;
+	cursor: pointer;
+}
+
+#live .option_c2.on {
+	background: url(../img/live/option_tog_on-FB4D4A15297984B08DACC40A27FB355A.png) no-repeat;
+}
+
+#live .option_c3 {
+	width: 16px;
+	color: #bbb;
+}
+
+#live .option_row:hover .option_c3 {
+	color: #fff;
+}
+
+/* --- Gamefield --- */
+
+#live .field {
+	height: 200px;
+	background: url(../img/live/field-572C800A5442EF2644796D3E77130AEA.jpg) no-repeat 0 30px;
+}
+
+#live .field .soccer, #live .field .tennis {
+	width: 550px;
+	height: 170px;
+}
+
+#live .field .tennis {
+	color: #444;
+	padding: 32px 0 0 6px;
+}
+
+#live .field .soccer {
+	background: url(../img/live/field_soccer-85C5132A72CBBF59EC4219CCB788AC28.png) no-repeat 0 30px;
+}
+
+#live .field .tennis.clay_green {
+	background: url(../img/live/field_tennis_clay_green-FD7111177EA0D4EC60E4F4C27AAB8717.png) no-repeat 0 30px;
+}
+
+/*/img/conference/toptennis/top-tennis-rot.jpg*/
+#live .field .tennis.red {
+	background: url(../img/live/field_tennis_clay_red_in-EFFF692D41506223F8A4B013007A34F9.png) no-repeat 0 30px;
+}
+/*/img/conference/toptennis/top-tennis-sand.jpg*/
+#live .field .tennis.orange {
+	background: url(../img/live/field_tennis_clay_red_out-BC7B059E55F1083B902F272AC39DCE0F.png) no-repeat 0 30px;
+}
+/*/img/conference/toptennis/top-tennis-hellblau.jpg*/
+#live .field .tennis.lightblue {
+	background: url(../img/live/field_tennis_hardcourt_in-FF2655B7ED8AA0C3F807BD7A56861DDA.png) no-repeat 0 30px;
+}
+
+/*/img/conference/toptennis/top-tennis-dunkelblau.jpg*/
+#live .field .tennis.darkblue {
+	background: url(../img/live/field_tennis_hardcourt_out-64C7CA58FCED79F981CFF34752F9AD2B.png) no-repeat 0 30px;
+}
+
+/* /img/conference/toptennis/top-tennis-green.jpg */
+#live .field .tennis.green {
+	background: url(../img/live/field_tennis_grass-B089942BCBFF52677863C8D4AF259605.png) no-repeat 0 30px;
+}
+
+/* /img/conference/toptennis/top-tennis-lila.jpg*/
+#live .field .tennis.purple {
+	background: url(../img/live/field_tennis_purple-38A88C3696134637E250C6E68A53E438.png) no-repeat 0 30px;
+}
+
+/* /img/conference/toptennis/top-tennis-dunkelgrau.jpg*/
+#live .field .tennis.grey {
+	background: url(../img/live/field_tennis_grey-C2CA0F57C812C5355B4CA46446BAFDAB.png) no-repeat 0 30px;
+}
+
+#live .soccer .over {
+	height: 200px;
+	text-align: center;
+}
+
+#live .soccer .txt_1 {
+	font-size: 16px;
+	font-weight: bold;
+	line-height: 20px;
+	color: #fff;
+	text-align: center;
+	text-shadow: #000000 0px 0px 5px;
+	padding: 127px 30px 0;
+	display: inline-block;
+}
+
+#live .soccer .txt_2 {
+	font-size: 11px;
+	line-height: 12px;
+}
+
+#live .soccer .offence_1 {
+	background: url(../img/live/over_offence_l-D14D9DCD4BEDF3EBED61D1933E3807C5.png) no-repeat 0 30px;
+}
+
+#live .soccer .offence_1 .txt_1 {
+	background: url(../img/live/over_offence_l_arr-60A454D3BA5B037AEF201A55172484B8.png) no-repeat right bottom;
+}
+
+#live .soccer .offence_2 {
+	background: url(../img/live/over_offence_r-BEB776BA17F37023CF615C58052425FD.png) no-repeat 0 30px;
+}
+
+#live .soccer .offence_2 .txt_1 {
+	background: url(../img/live/over_offence_r_arr-6CB0C4DCCF477386D7A72892EE93CD2B.png) no-repeat left bottom;
+}
+
+#live .soccer .change_1 .txt_1 {
+	background: url(../img/live/over_change-8D21DBE612F9A44053CCBF07FB17BB1C.png) no-repeat left bottom;
+}
+
+#live .soccer .change_2 .txt_1 {
+	background: url(../img/live/over_change-8D21DBE612F9A44053CCBF07FB17BB1C.png) no-repeat right bottom;
+}
+
+#live .soccer .foul_1 .txt_1 {
+	background: url(../img/live/over_foul_l-BAE977CBE134824D59CC2C6273298DFF.png) no-repeat left bottom;
+}
+
+#live .soccer .foul_2 .txt_1 {
+	background: url(../img/live/over_foul_r-8BD9DE8912C688364103DFA2AC41D152.png) no-repeat right bottom;
+}
+
+#live .soccer .point_1 {
+	background: url(../img/live/over_goal_l-8A9916CCE5A11D28E218032D8B626DD5.png) no-repeat 0 30px;
+}
+
+#live .soccer .point_1 .txt_1 {
+	background: url(../img/live/over_goal-CA9FD5B04B36A8B486C08A062DB7AABB.png) no-repeat left bottom;
+}
+
+#live .soccer .point_2 {
+	background: url(../img/live/over_goal_r-2A6D481C81C4FCA9E022E352149FA223.png) no-repeat 0 30px;
+}
+
+#live .soccer .point_2 .txt_1 {
+	background: url(../img/live/over_goal-CA9FD5B04B36A8B486C08A062DB7AABB.png) no-repeat right bottom;
+}
+
+#live .soccer .goal-kick_1 {
+	background: url(../img/live/over_goalkick_l-76EDD34EB37610103348C9598A70D491.png) no-repeat 0 30px;
+}
+
+#live .soccer .goal-kick_2 {
+	background: url(../img/live/over_goalkick_r-DDA106D926FBA3C65E56682C037D6790.png) no-repeat 0 30px;
+}
+
+#live .soccer .offside_1 {
+	background: url(../img/live/over_offside_l-9A7FA5E9B6FF2861E6A9FB75F3123408.png) no-repeat 0 30px;
+}
+
+#live .soccer .offside_2 {
+	background: url(../img/live/over_offside_r-A5D37C7E37CE72797C74E9814FF55DB8.png) no-repeat 0 30px;
+}
+
+#live .soccer .red-card_1 .txt_1 {
+	background: url(../img/live/over_redcard_l-0305976785A060F88F0BE5A67E9AB559.png) no-repeat left bottom;
+	padding: 127px 40px 0;
+}
+
+#live .soccer .red-card_2 .txt_1 {
+	background: url(../img/live/over_redcard_r-8B59A4146E6FECF1C530A9E7C2865D52.png) no-repeat right bottom;
+	padding: 127px 40px 0;
+}
+
+#live .soccer .yellow-card_1 .txt_1 {
+	background: url(../img/live/over_yellowcard_l-F9FA8D8B8EC15469CF36ED56F44A4557.png) no-repeat left bottom;
+	padding: 127px 40px 0;
+}
+
+#live .soccer .yellow-card_2 .txt_1 {
+	background: url(../img/live/over_yellowcard_r-6729AE437BC6509413AB082A6ADA23A3.png) no-repeat right bottom;
+	padding: 127px 40px 0;
+}
+
+#live .soccer .corner-kick_1 {
+	background: url(../img/live/over_corner_l-DE77107163AC0C0139DC3E3D46117C01.png) no-repeat 0 30px;
+}
+
+#live .soccer .corner-kick_2 {
+	background: url(../img/live/over_corner_r-700764B5B4C855995FAC64CC4398D79F.png) no-repeat 0 30px;
+}
+
+#live .soccer .halftime {
+	background: url(../img/live/over_halftime-C12FE62B1D31C0B8AA8FFCDDCFEA1963.png) no-repeat 0 30px;
+}
+
+/* --- Background: Timeline & Statistics --- */
+
+.stat_soccer {
+	height: 215px;
+	background: url(../img/live/stat_soccer-2F530BCB49B16251B3743B234319074B.png) no-repeat 9px 0;
+}
+
+.stat_tennis {
+	height: 110px;
+	background: url(../img/live/stat_tennis-D731423B29984FAC219435F5B82FF5B3.png) no-repeat 9px 0;
+}
+
+#live .stat_soccer, #live .stat_tennis {
+	background-color: #eee;
+}
+
+/* --- Event Statistics --- */
+
+.event_stat {
+	padding: 6px 0 0 11px;
+}
+
+.es_cell {
+	width: 40px;
+	text-align: center;
+}
+
+.es_cell.name {
+	width: 183px;
+	height: 20px;
+	text-align: left;
+	padding-left: 25px;
+	white-space: nowrap;
+	overflow: hidden;
+}
+
+.stat_tennis .es_cell.name {
+	width: 147px;
+	white-space: nowrap;
+	overflow: hidden;
+}
+
+.stat_tennis .player_name {
+	width: 147px;
+	white-space: nowrap;
+	overflow: hidden;
+}
+
+.topbar .player_name1 {
+	width: 163px;
+	white-space: nowrap;
+	overflow: hidden;	
+}
+
+.topbar .player_name2 {
+	width: 203px; 
+	white-space: nowrap;
+	overflow: hidden;
+}
+
+.es_cell.name.head {
+	height: 36px;
+	font-size: 14px;
+	font-weight: bold;
+	color: #fff;
+}
+
+.es_cell.short {
+	width: 28px;
+}
+
+.es_cell.point {
+	background: url(../img/live/icon_goal-6B38F5E1D04A444A30DBBDF42B62E0FE.png) no-repeat 50% 50%;
+}
+
+.es_cell.yellow-card {
+	background: url(../img/live/icon_yellowcard-41438F405CC4A5D94C8BD75CF6BC7E6C.png) no-repeat 50% 50%;
+}
+
+.es_cell.red-card {
+	background: url(../img/live/icon_redcard-13018C82C98DA75F56AB93C0BC6FA0C0.png) no-repeat 50% 50%;
+}
+
+.es_cell.corner-kick {
+	background: url(../img/live/icon_corner-8B9E1F4A8450D5A4C5DB10909E987835.png) no-repeat 50% 50%;
+}
+
+.es_cell.offside {
+	background: url(../img/live/icon_offside-8B57FD55FCCE82098D7A1EF8E6462614.png) no-repeat 50% 50%;
+}
+
+.es_cell.goal-kick {
+	background: url(../img/live/icon_goalkick-C147AE698A95AAC30CD73FA419EE32C7.png) no-repeat 50% 50%;
+}
+
+.es_cell.foul {
+	background: url(../img/live/icon_pipe-D90E6CC5CD6B6EF86E6DC81BEA780608.png) no-repeat 50% 50%;
+}
+
+.es_cell.substitution {
+	background: url(../img/live/icon_change-77650DD568F4D1CE247ABDD10AE3B54B.png) no-repeat 50% 50%;
+}
+
+.es_cell.t1 {
+	background: url(../img/live/icon_t1-23E073F2E82D620A7E7DA3D8DA436729.png) no-repeat 50% 50%;
+}
+
+.es_cell.t2 {
+	background: url(../img/live/icon_t2-053ED1252080175F717C39B2457F1AC9.png) no-repeat 50% 50%;
+}
+
+.es_cell.t3 {
+	background: url(../img/live/icon_t3-9842E00B3EAEFBDB41C8A5578760F49B.png) no-repeat 50% 50%;
+}
+
+.es_cell.t4 {
+	background: url(../img/live/icon_t4-D1065B32DB1C82671C24BFA0F9720D0D.png) no-repeat 50% 50%;
+}
+
+/* --- Event Timeline --- */
+
+.event_tl {
+	width: 725px;
+	height: 55px;
+	margin: 42px 0 0 17px;
+}
+
+.event_tl .pix {
+	position: absolute;
+	width: 7px;
+	height: 15px;
+}
+
+.event_tl .top {
+	margin-top: 2px;
+}
+
+.event_tl .bot {
+	margin-top: 38px;
+}
+
+/* z-index abhängig davon, welcher Punkttyp welche andere überschreibt, #8449
+   soll kleiner als z-index von tooltip_10 sein (Rollover) */
+.event_tl .foul {
+	z-index: 800;
+	width: 10px;
+	background: url(../img/live/tl_icon_foul-D84072596CAD57AD97899B6FD08694DE.gif) no-repeat;
+}
+
+.event_tl .goal-kick {
+	z-index: 810;
+	background: url(../img/live/tl_icon_goalkick-B6295CC576D4ECED63EB0904F60CF990.gif) no-repeat;
+}  
+ 
+.event_tl .offside {
+	z-index: 820;
+	background: url(../img/live/tl_icon_offside-4BD92D1E345F8DB3141702080FE397EF.gif) no-repeat;
+}
+
+.event_tl .corner-kick {
+	z-index: 830;
+	background: url(../img/live/tl_icon_corner-E57269D0D61E7B21F6B02965DE936549.gif) no-repeat;
+}
+
+.event_tl .yellow-card {
+	z-index: 840;
+	background: url(../img/live/tl_icon_yellowcard-4663B72F8DCCDEF356B5D3E166B522FE.gif) no-repeat;
+}
+
+.event_tl .red-card {
+	z-index: 850;
+	background: url(../img/live/tl_icon_redcard-2E6E8B68B73EC720089815A209ACA264.gif) no-repeat;
+}
+
+.event_tl .point {
+	z-index: 860;
+	width: 11px;
+	background: url(../img/live/tl_icon_goal-90B714A512D2CAD114BF5E2E99848A66.gif) no-repeat;
+}
+
+.event_tl .substitution {
+	z-index: 870;
+	background: url(../img/live/tl_icon_change-CFBE7C3A09B00EA7A5B5BD3635549C12.gif) no-repeat;
+}
+
+.event_tl .tl_top {
+	z-index: 700;
+	position: absolute;
+	margin: -19px 0 0 280px;
+}
+
+.event_tl .tl_top div {
+	width: 170px;
+	font-size: 13px;
+	font-weight: bold;
+	line-height: 16px;
+	color: #fff;
+	text-align: center;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	white-space: nowrap;
+}
+
+.event_tl .tl_top span {
+	font-size: 10px;
+	font-weight: normal;
+	line-height: 60px;
+}
+
+/* --- Bubble --- */
+
+#tooltip_10 {
+	z-index: 1000;
+	position: absolute;
+	width: 176px;
+	height: 68px;
+	color: #fff;
+	background: url(../img/live/bubble_bg_r-AB6321EE8AF61B4D03C0D7334E85BD56.png) no-repeat;
+	padding: 11px 14px;
+	display: none;
+}
+
+#tooltip_10.flip {
+	background: url(../img/live/bubble_bg_l-313167ED0099DEA45BFEA1E13EAE8395.png) no-repeat;
+}
+
+#tooltip_10_a {
+	width: 148px;
+	font-size: 18px;
+	font-weight: bold;
+	line-height: 22px;
+	overflow: hidden;
+	white-space: nowrap;
+}
+
+#tooltip_10_b {
+	width: 148px;
+	color: #ccc;
+	overflow: hidden;
+	white-space: nowrap;
+	padding-top: 6px;
+}
+
+/* --- Event Statistics Switch (MyBets, Results & Livescore) --- */
+
+.tl_switch {
+	z-index: 2;
+	position: absolute;
+	color: #444;
+	margin: 40px 0 0 575px;
+}
+
+/* --- Details Button --- */
+
+.details_row {
+	width: 108px;
+	height: 0;
+	margin-left: 648px;
+}
+
+.details_row.on {
+	height: 2px;
+	border-bottom: 1px solid #d4d4d4;
+}
+
+.details_but {
+	z-index: 3;
+	position: absolute;
+	width: 106px;
+	height: 20px;
+	line-height: 20px;
+	text-align: center;
+	color: #666;
+	border: 1px solid #ccc;
+	border-bottom: 1px solid #bebebe;
+	
+	background: #c1c1c1; /* Old browsers */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #bababa), color-stop(100%, #cccccc)); /* Saf4+, Chrome */
+	background: -webkit-linear-gradient(top, #bababa 0%, #cccccc 100%); /* Chrome 10+, Saf5.1+ */
+	background:    -moz-linear-gradient(top, #bababa 0%, #cccccc 100%); /* FF3.6+ */
+	background:     -ms-linear-gradient(top, #bababa 0%, #cccccc 100%); /* IE10+ */
+	background:      -o-linear-gradient(top, #bababa 0%, #cccccc 100%); /* Opera 11.10+ */
+	background:         linear-gradient(top, #bababa 0%, #cccccc 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#bababa', endColorstr='#cccccc',GradientType=0); /* IE6-9 */
+	margin-top: -22px;
+	cursor: pointer;
+}
+
+.details_row.on .details_but {
+	margin-top: -20px;
+}
+
+/* --- Special Bets --- */
+
+.bettype {
+	border-right: 1px solid #ccc;
+	background-color: #fff;
+}
+
+.bettype_bg {
+	background-image: url(../img/live/bettype_bg-C5C064D9BA9BD7B0F3D38A3DC10C4CC4.gif);
+	background-repeat: repeat-y;
+}
+
+.bettype.point, .bettype.penalty {
+	background: url(../img/bettype_blue-D77EDD489BDC13EB62BB4E3F71AAB3EB.gif) no-repeat 50% 7px #fff;
+}
+
+.bettype.corner-kick {
+	background: url(../img/bettype_brown-4773B28461EBCD4F006FC8E76BB33A52.gif) no-repeat 50% 7px #fff;
+}
+
+.bettype.yellow-card {
+	background: url(../img/bettype_yellow-5B7AC5F125B03F980DE3F9220F50BA93.gif) no-repeat 50% 7px #fff;
+}
+
+.bettype.offside {
+	background: url(../img/bettype_green-FDBF18EB916E53AD5A3346A73C3EB491.gif) no-repeat 50% 7px #fff;
+}
+
+/* --- Top Competion --- */
+
+#live .topcomp_bg {
+	height: 200px;
+}
+
+#live .betradar_layer {
+	top: -4px;
+	left: 759px; 
+}
+
+#live .loadingSymbol {
+	text-align: center;
+	height: 105px;
+	background: url(../img/loader-F431E817190A2AF4F0B2F060BD58D03C.gif) #ffffff no-repeat;
+	background-position: center;
+}
+
+/* --- alte conference, wegen tabelle in subnavi layer 'livewetten' --- */
+/* --- sollte mittelfristig ersetzt werden --- */
+
+table .fixedLayout {
+	table-layout: fixed;
+}
+
+table .conferenceRow {
+	/*sonst bewegt sich die Row wenn Quoten angelegt werden, weil table-layout:fixed wegen ie  entfernt wrude*/
+	height: 24px;
+	line-height: 24px;
+	text-align: center;
+	background-color: #ececec;
+	/*braucht man sowohl an tds als auch an trs, weil sonst in firefox zu dick erscheint/in ie gar nicht angezeigt*/
+	/*border-top: 1px solid #ffffff;*/
+}
+
+/*alternierungsstyle*/
+table .conferenceRow.even {
+	background-color: #ffffff;
+}
+
+table .borderRight {
+	border-right: 2px solid #ffffff;
+	/*border-right: 2px solid black;*/
+}
+
+table .timeCell {
+	text-align: center;
+	/*genauso wie in teamCell, betCell*/ /*border-top: 1px solid #ffffff;*/
+	width: 40px;
+	white-space: nowrap;
+}
+
+/*wo mannschaften und spieltand stehen*/
+table .teamCell {
+	width: 227px;
+	/*border-top: 1px solid #ffffff;*/
+	/*kein padding, sonst kommt eine spalte zwischen überschriftstabellen*/
+	/*padding: 0 2px 0 2px;*/
+}
+
+/*mannschaftsname soll abgeschnitten werden, wenn nicht passt (overflow:hidden)*/
+table .teamName {
+	white-space: nowrap;
+	width: 91px;
+	padding: 0 3px;
+	text-align: left;
+	overflow: hidden;
+	cursor: default;
+	line-height: 20px; /*wichtig für events mit roten karten im Webtopevents-Bereich*/
+}
+
+/*damit score in gemerged zellen zentriert steht*/
+table .scoreCentered {
+	margin: 0px auto;
+}
+
+.gwt-Label {
+	line-height: 27px;
+	text-align: center;
+}
+
+table .scoreCell {
+	white-space: nowrap;
+	width: 11px;
+	text-align: center;
+	overflow: hidden;
+}
+
+/*score-Styles braucht man um Spielstand anzuzeigen*/
+table .scoreCellLeft {
+	font-weight: bold;
+	white-space: nowrap;
+	/*margin: 0 0 0 4px;*/
+	margin: 0 0 0 0;
+	text-align: center;
+	overflow: hidden;
+	width: 11px;
+}
+
+table .scoreCellRight {
+	font-weight: bold;
+	white-space: nowrap;
+	width: 11px;
+	/*margin: 0 4px 0 0;*/
+	margin: 0 0 0 0;
+	text-align: center;
+	overflow: hidden;
+}
+
+table .scoreCell.small {
+	width: 3px;
+	padding: 0px;
+	margin: 0 1px;
+	font-weight: bold;
+}
+
+div .teamNamePadded {
+	width: 101px;
+}

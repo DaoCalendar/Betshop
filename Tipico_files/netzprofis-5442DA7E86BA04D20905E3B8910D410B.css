@@ -1,0 +1,201 @@
+/* -------------------------- netzprofis CSS Styles --------------------------------------------------------- */
+/* -----Hier bitte in Zukunft alle Styles die hinzugef�gt werden m�ssen hinterlegen-------------------------- */
+/* -----Bitte synchron mit der netzprofis.css aus dem neuen Metacab Prototypen halten!----------------------- */
+/* ---------------------------------------------------------------------------------------------------------- */
+
+/*wird auf livescore-Bereich gesetzt, damit weil man den Style .box_lwk_foot nicht nehmen kann (smallconference.css) */
+.box_livescore_foot {
+    height: 2px;
+    background: url(../img/lwk_box_foot_bg-07FF66C6CE38E41F32950F9A7A4044C8.gif) no-repeat 0 bottom;
+}
+
+/*bisschen k�rzer als auf der Startseite, weil auf der Startseite noch ein Icon weniger angezeigt wird*/
+#search #hilights_2 .col_3.left {
+    width: 190px;
+}
+
+/*damit in ie 7 bei Elfmeterschie�en die Spalte nicht verschoben wird*/
+.penaltyResultSet {
+	width: 120px;
+}
+
+/*wird auf Tore angewendet, sodass sie blinken: braucht man in lwg gadget und lwk*/
+.invisible {
+	visibility: hidden;
+}
+
+/*blinken von Roten karten*/
+table .teamNameRedCard1.invisible, table .teamNameRedCard2.invisible, table .teamNameRedCard3.invisible, table .teamNameRedCard4.invisible {
+    background-image: url(../img/p-5459177B437C1911EF8A808C92C8D7C5.gif);
+}
+
+#sub_nav li ul.box_00 {
+	z-index: 102;
+}
+
+#search .box_lwk .conferenceRow img {
+	width: 22px;
+	height: 22px;
+	background: none; /*images werden explizit gesetzt, Sprites werden nicht verwendet*/
+}
+
+/* neues IBAN Forumlar */
+.sheet_r_v {
+    height: 24px;
+    line-height: 24px;
+    overflow: hidden;
+}
+
+.sheet_r_v .input_text_v {
+    background-color: #FFFFFF;
+    border: 1px solid #CCCCCC;
+    height: 16px;
+    margin-top: 3px;
+}
+
+.iban_label {
+    margin-left: 3px;
+    margin-right: 3px;
+}
+
+.sheet_l_iban {
+    color: #666666;
+    height: 24px;
+    line-height: 24px;
+    width: 194px;
+}
+
+/* Hover f�r Drucken und L�schen link in der Nachricht */
+#messages_layer .news .foot a:hover {
+    color: #DC0037;
+}
+
+/* Kundenkartenaktivierung verloren gegangene Styles */
+.input_data {
+	width: 240px;
+    height: 15px;
+    border: 0;
+}
+
+.input_text.disabled input {
+    background-color: transparent;
+}
+
+.input_text.disabled {
+    background-color: #f0f0f0;
+}
+
+/*wird in mobileAndStore.xhtml / new Mobile-Layer (AppStore) benutzt, 
+weil die Textfarbe ohne Hover grau (nicht schwarz) sein soll */
+.roll_red2:hover {
+	color: #db0036;
+}
+
+/* skrause it-addiction Warning */
+.addictionWarning {
+    background-color: #FFF3B2;
+    width: 475px;
+    height: 25px;
+    position: relative;
+    padding: 7px 14px;
+}
+
+.addictionWarning-Text {
+    background-color: #FFF3B2;
+    height: 30px;
+    overflow: hidden;
+    text-align: center;
+    font-size: 11px;
+}
+
+.addictionWarning-Left {
+    position: absolute;
+    z-index: 2;
+    width: 0px;
+    height: 0px;
+    border-bottom: 40px solid white; /* wie height vom parent */
+    border-right: 20px solid #FFF3B2;
+    top: 0;
+    left: 0;
+}
+
+.addictionWarning-Right {
+    position: absolute;
+    z-index: 2;
+    width: 0px;
+    height: 0px;
+    border-bottom: 40px solid white; /* wie height vom parent */
+    border-left: 20px solid #FFF3B2;
+    top: 0;
+    right: 0;
+}
+
+table.itAddictionTable {
+	border: thin; 
+	width: 100%; 
+	border-style: solid; 
+	padding: 2px;
+}
+
+tr.itAddictionTr {
+	border: thin; 
+	border-style: solid; 
+	padding: 2px;
+}
+
+td.itAddictionTd {
+	border: thin; 
+	border-style: solid; 
+	padding: 2px;
+}
+
+
+#sh_update .sheet_l {
+	color: #666666;
+    height: 24px;
+    line-height: 24px;
+    padding-right: 20px;
+    text-align: right;
+    width: 100px;
+}
+
+#sh_update .sheet_r .form {
+    margin-right: 15px;
+    width: 170px;
+}
+
+#sh_update .sheet_r {
+    height: 24px;
+    line-height: 24px;
+    overflow: hidden;
+    width: 382px;
+}
+
+#sh_update .input_text {
+    border: 1px solid #DDDDDD;
+    font-size: 12px;
+    height: 18px;
+    line-height: 14px;
+    width: 173px;
+}
+
+#sh_update .sheet_r select {
+    border: 1px solid #CCCCCC;
+    font-size: 11px;
+    height: 18px;
+    line-height: 11px;
+    margin-top: 3px;
+    width: 177px;
+}
+
+#sh_update .red {
+    color: #BF0030;
+    width: 193px;
+}
+
+.vertical_align_cell {
+	display: table-cell;
+	vertical-align:middle;
+	height:24px;
+}
+

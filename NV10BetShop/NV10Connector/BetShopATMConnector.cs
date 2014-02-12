@@ -27,6 +27,9 @@ namespace NV10Connector
         public delegate void ReceivedEvent(BetShopPushEvent inEvent);
         private readonly ReceivedEvent _eventReceiver;
 
+        //private Stream reqStream;
+        //private bool   reqStreamSuccess;
+
         public BetShopATMConnector(string folderName, ReceivedEvent inEvent, ThrowedException inException)
         {
             LoadConfigFile(folderName);
@@ -92,6 +95,22 @@ namespace NV10Connector
             }
         }
 
+        //public void getStream(object data)
+        //{
+        //    HttpWebRequest webRequest = (HttpWebRequest)data;
+        //    try
+        //    {
+        //        Stream s = webRequest.GetRequestStream();
+        //        reqStream = s;
+        //        reqStreamSuccess = true;
+        //    }
+        //    catch
+        //    {
+        //        reqStreamSuccess = false;
+        //    }
+            
+        //}
+
         public void AppendText(string text, double amount = 0.0)
         {
             //textBox.AppendText(text);
@@ -103,22 +122,55 @@ namespace NV10Connector
             Exception ex = null;
             if (!string.IsNullOrEmpty(serviceURL))
             {
-                HttpWebRequest webRequest = WebRequest.Create(serviceURL) as HttpWebRequest;
+                WebRequest wr = WebRequest.Create(serviceURL);
+                HttpWebRequest webRequest = wr as HttpWebRequest;
                 webRequest.ContentType = "application/json";
                 webRequest.Method = "POST";
 
-                using (StreamWriter streamWriter = new StreamWriter(webRequest.GetRequestStream()))
-                {
-                    streamWriter.Write(message);
-                    streamWriter.Close();
-                }
-
                 try
                 {
-                    HttpWebResponse response = (HttpWebResponse)webRequest.GetResponse();
-                    Stream responseStream = response.GetResponseStream();
-                    StreamReader streamReader = new StreamReader(responseStream);
-                    responseMessage = streamReader.ReadToEnd();                    
+                    //System.Threading.Thread t = new System.Threading.Thread(new System.Threading.ParameterizedThreadStart(getStream));
+                    //t.Start(webRequest);
+                    //System.Threading.Thread.Sleep(1000);
+                    //bool timeout = false;
+                    //DateTime startTime = DateTime.Now;
+                    //while (t.ThreadState == System.Threading.ThreadState.Running && !timeout)
+                    //{
+                    //    DateTime timeNow = DateTime.Now;
+                    //    TimeSpan ts = timeNow - startTime;
+                    //    if(ts.TotalSeconds>8)
+                    //    {
+                    //        timeout = true;
+                    //    }
+                    //}
+                    //if (!reqStreamSuccess)
+                    //{
+                    //    //t.Abort();
+                    //    throw new Exception("TImeout in connect server for push money");
+                    //}
+                    //Stream s = reqStream;
+
+                    DateTime connStart = DateTime.Now;
+                    Stream s = webRequest.GetRequestStream();
+                    DateTime connEnd = DateTime.Now;
+                    if ((connEnd - connStart).TotalSeconds > 8)
+                    {
+                        throw new Exception("Connection took to long money maybe returned, exiting!");
+                    }
+                    using (StreamWriter streamWriter = new StreamWriter(s))
+                    {
+                        streamWriter.Write(message);
+                        streamWriter.Close();
+                    }
+
+                    using (HttpWebResponse response = (HttpWebResponse)webRequest.GetResponse())
+                    {
+                        Stream responseStream = response.GetResponseStream();
+                        StreamReader streamReader = new StreamReader(responseStream);
+                        responseMessage = streamReader.ReadToEnd();
+                        streamReader.Close();
+                        streamReader.Dispose();
+                    }
                 }
                 catch (Exception exc)
                 {
