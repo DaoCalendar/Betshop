@@ -113,6 +113,10 @@ namespace NV10Connector
 
         public void AppendText(string text, double amount = 0.0)
         {
+            //TextWriter logB = new StreamWriter(Path.Combine(logPath, "eSSP.log"), true);
+            //logB.WriteLine("DATE AND TIME CALLED PUSH: " + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"));
+            //logB.WriteLine("Text and amount: " + text+", "+amount.ToString("0.00"));
+            //logB.Close();
             //textBox.AppendText(text);
 
             string message = string.Format("{{ \"time\":\"{0}\", \"client\":\"{1}\", \"accesskey\":\"{2}\", \"user\":\"{3}\", \"amount\":\"{4}\", \"message\":\"{5}\" }}",
@@ -170,6 +174,18 @@ namespace NV10Connector
                         responseMessage = streamReader.ReadToEnd();
                         streamReader.Close();
                         streamReader.Dispose();
+                        int beginIndex = responseMessage.IndexOf("\"status\":");
+                        if (beginIndex > 0)
+                        {
+                            beginIndex+=10;
+                            int endIndex = responseMessage.IndexOf(",", beginIndex);
+                            int length = endIndex - beginIndex;
+                            string status = responseMessage.Substring(beginIndex, length);
+                            if (status != "\"ok\"")
+                            {
+                                throw new Exception("Error pushing money: " + responseMessage);
+                            }
+                        }
                     }
                 }
                 catch (Exception exc)
@@ -184,12 +200,14 @@ namespace NV10Connector
                 TextWriter log = new StreamWriter(Path.Combine(logPath, "eSSP.log"), true);
                 if (ex != null)
                 {
+                    log.WriteLine("DATE AND TIME: " + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"));
                     log.WriteLine("EXCEPTION: " + ex.GetType().Name + " - " + ex.Message);
                     log.WriteLine("STACK TRACE: \r\n" + ex.StackTrace);
                     _exceptionThrower(ex);
                 }
                 else
                 {
+                    log.WriteLine("DATE AND TIME: " + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"));
                     log.WriteLine("POST: " + message);
                     if (!string.IsNullOrEmpty(responseMessage))
                         log.WriteLine("response: " + responseMessage);

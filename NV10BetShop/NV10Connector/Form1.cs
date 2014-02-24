@@ -140,7 +140,7 @@ namespace NV10Connector
             }
             //if (response.EventType == NV10PollEvent.NV10PollEventType.CreditNote)
             //{
-            //    int noteVal = GetChannelValue(response.EventData);
+            //    int noteVal = GetChannelValue(respo   nse.EventData);
             //    betShopATM.AppendText("Credit " + FormatToCurrency(noteVal) + "\r\n", noteVal);
             //}
             if (response.EventType == NV10PollEvent.NV10PollEventType.ReadNote)
